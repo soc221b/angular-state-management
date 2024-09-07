@@ -1,0 +1,8 @@
+<form (submit)="onAddTodo($event)">
+  <input placeholder="What needs to be done?" />
+  <button type="submit">Add</button>
+</form>
+
+<button (click)="onToggleAll()">Toggle All</button>
+
+<pre>{{ todoList() | json }}</pre>
