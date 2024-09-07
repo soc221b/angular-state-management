@@ -1,0 +1,28 @@
+<input placeholder="What needs to be done?" (keyup.enter)="onAddTodo($event)" />
+
+<h2>Active Todo List</h2>
+<ul>
+  @for (todo of activeTodoList$ | async; track todo.id) {
+    <li>
+      <label>
+        {{ todo.title }}
+        <input type="checkbox" (change)="onToggleTodo(todo.id)" />
+      </label>
+    </li>
+  }
+</ul>
+
+<h2>Completed Todo List</h2>
+<ul>
+  @for (todo of completedTodoList$ | async; track todo.id) {
+    <li>
+      <label>
+        {{ todo.title }}
+        <input type="checkbox" (change)="onToggleTodo(todo.id)" checked />
+      </label>
+    </li>
+  }
+</ul>
+
+<hr />
+<pre>{{ todoList$ | async | json }}</pre>
